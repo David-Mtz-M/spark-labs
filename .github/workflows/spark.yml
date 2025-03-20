@@ -3,9 +3,9 @@ name: spark
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
   # Allows you to run this workflow manually from the Actions tab
   repository_dispatch:
     types: [spark]
@@ -13,12 +13,16 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   spark:
-    # The type of runner that the job will run on
+    # The type of runner that the job will run on 1
     runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+
     steps:
     - uses: actions/checkout@v4
     - run: ls -la  
-
     - uses: actions/setup-python@v5
       with:
         python-version: '3.10'
@@ -33,7 +37,19 @@ jobs:
         spark-version: '3.5.3'
         hadoop-version: '3'
 
-    - run: spark-submit --version
+    - run: spark-submit --master local hello-spark.py
+    - run: ls -la  
+
+    - name: GIT commit and push docs
+      env: 
+        CI_COMMIT_MESSAGE: save spark results
+        CI_COMMIT_AUTHOR: David-Mtz-M 
+      run: |
+        git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+        git config --global user.email "mtzmolinad35@gmail.com"
+        git add results
+        git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
+        git push
 
 
 
