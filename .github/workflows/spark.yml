@@ -13,7 +13,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   spark:
-    # The type of runner that the job will run on 1
+    # The type of runner that the job will run on 1 a
     runs-on: ubuntu-latest
     permissions:
       # Give the default GITHUB_TOKEN write permission to commit and push the
