@@ -40,8 +40,6 @@ def get_spark_results(url_results):
 
 
 
-
-
 # Front End
 
 
@@ -50,8 +48,8 @@ st.title("Spark & streamlit")
 
 st.header("spark-submit Job")
 
-github_user  =  st.text_input('Github user', value='adsoftsito')
-github_repo  =  st.text_input('Github repo', value='bigdata')
+github_user  =  st.text_input('Github user', value='David-Mtz-M')
+github_repo  =  st.text_input('Github repo', value='spark-labs')
 spark_job    =  st.text_input('Spark job', value='spark')
 github_token =  st.text_input('Github token', value='***')
 
@@ -61,7 +59,7 @@ if st.button("POST spark submit"):
 
 st.header("spark-submit results")
 
-url_results=  st.text_input('URL results', value='https://raw.githubusercontent….')
+url_results=  st.text_input('URL results', value='https://raw.githubusercontent.com/adsoftsito/bigdata/refs/heads/main/datasets/people.csv')
 
 if st.button("GET spark results"):
     get_spark_results(url_results)
