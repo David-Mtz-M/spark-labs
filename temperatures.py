@@ -55,10 +55,18 @@ if __name__ == "__main__":
     df_haiti_temp.show()
 
     # Save results to JSON
-    results = df_avg_temp.toJSON().collect()
-    df_avg_temp.write.mode("overwrite").json("results")
+    results = {
+        "average_temperature_change": df_avg_temp.toJSON().collect(),
+        "top_years_temperature_change": df_top_years.toJSON().collect(),
+        "haiti_temperature_change": df_haiti_temp.toJSON().collect()
+    }
 
+    # Overwrite the results folder with structured JSON data
     with open('results/data.json', 'w') as file:
         json.dump(results, file)
+
+    df_avg_temp.write.mode("overwrite").json("results/avg_temp")
+    df_top_years.write.mode("overwrite").json("results/top_years")
+    df_haiti_temp.write.mode("overwrite").json("results/haiti")
 
     spark.stop()

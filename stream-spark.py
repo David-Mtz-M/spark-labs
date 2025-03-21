@@ -33,10 +33,18 @@ def post_spark_job(user, repo, job, token):
 
 def get_spark_results(url_results):
     response = requests.get(url_results)
-    st.write(response)
 
-    if  (response.status_code ==  200):
-        st.write(response.json())
+    if response.status_code == 200:
+        results = response.json()
+        st.subheader("Average Temperature Change per Country")
+        st.json(results.get("average_temperature_change", []))  # Show avg temp
+
+        st.subheader("Top 10 Years with Highest Temperature Change")
+        st.json(results.get("top_years_temperature_change", []))  # Show top years
+
+        st.subheader("Temperature Change in Haiti")
+        st.json(results.get("haiti_temperature_change", []))  # Show Haiti data
+
 
 
 
