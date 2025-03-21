@@ -3,9 +3,9 @@ name: spark
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
   # Allows you to run this workflow manually from the Actions tab
   repository_dispatch:
     types: [spark]
@@ -40,7 +40,7 @@ jobs:
     #- run: spark-submit --master local hello-spark.py
     - run: wget -O dataset.csv https://raw.githubusercontent.com/adsoftsito/bigdata/refs/heads/main/datasets/people.csv   
     - run: ls -la
-    - run: spark-submit --master local people.py 
+    - run: spark-submit --main local people.py 
 
     - run: ls -la  
 
