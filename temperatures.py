@@ -67,6 +67,6 @@ if __name__ == "__main__":
 
     df_avg_temp.write.mode("overwrite").json("results/avg_temp")
     df_top_years.write.mode("overwrite").json("results/top_years")
-    df_haiti_temp.write.mode("overwrite").json("results/mexico")
+    df_mx_temp.write.mode("overwrite").json("results/mexico")
 
     spark.stop()
