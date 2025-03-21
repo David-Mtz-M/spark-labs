@@ -38,7 +38,7 @@ jobs:
         hadoop-version: '3'
 
     #- run: spark-submit --master local hello-spark.py
-    - run: wget -O temperatureDataset.csv https://raw.githubusercontent.com/David-Mtz-M/spark-labs/refs/heads/main/tempData.csv   
+    - run: wget -O dataset.csv https://raw.githubusercontent.com/David-Mtz-M/spark-labs/refs/heads/main/tempData.csv   
     - run: ls -la
     - run: spark-submit --master local temperatures.py 
 
