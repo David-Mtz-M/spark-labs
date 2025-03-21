@@ -56,6 +56,8 @@ st.title("Spark & streamlit")
 
 st.header("spark-submit Job")
 
+st.subheader("Hecho por David Martinez Molina A01735425")
+
 github_user  =  st.text_input('Github user', value='David-Mtz-M')
 github_repo  =  st.text_input('Github repo', value='spark-labs')
 spark_job    =  st.text_input('Spark job', value='spark')
