@@ -42,7 +42,7 @@ def get_spark_results(url_results):
         st.subheader("Top 10 Years with Highest Temperature Change")
         st.json(results.get("top_years_temperature_change", []))  # Show top years
 
-        st.subheader("Temperature Change in Haiti")
+        st.subheader("Temperature Change in Mexico")
         st.json(results.get("mexico_temperature_change", []))  # Show Mexico data
 
 

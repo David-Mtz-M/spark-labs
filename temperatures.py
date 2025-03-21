@@ -43,22 +43,22 @@ if __name__ == "__main__":
     print("Top 10 Years with Highest Temperature Change:")
     df_top_years.show()
 
-    # Query 4: Get temperature change for a specific country (e.g., Haiti)
+    # Query 4: Get temperature change for a specific country (e.g., Mexico)
     query = """
         SELECT Year, TemperatureChange
         FROM temperature
         WHERE Country = 'Mexico'
         ORDER BY Year
     """
-    df_haiti_temp = spark.sql(query)
-    print("Temperature Change in Haiti:")
-    df_haiti_temp.show()
+    df_mx_temp = spark.sql(query)
+    print("Temperature Change in Mexico:")
+    df_mx_temp.show()
 
     # Save results to JSON
     results = {
         "average_temperature_change": df_avg_temp.toJSON().collect(),
         "top_years_temperature_change": df_top_years.toJSON().collect(),
-        "mexico_temperature_change": df_haiti_temp.toJSON().collect()
+        "mexico_temperature_change": df_mx_temp.toJSON().collect()
     }
 
     # Overwrite the results folder with structured JSON data
